@@ -26,7 +26,7 @@ pipeline {
         }
          stage('integration_test') {
             steps {
-                dir('python-application-example/python') {
+                {
                     docker run --rm leonardo7coronel/python-app-leonardo-devops:v1
                 }
             }
