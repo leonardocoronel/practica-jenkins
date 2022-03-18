@@ -2,7 +2,7 @@ pipeline {
     agent {
         label('python')
     }
-    enviroment {
+    environment {
         PYPI_CREDENTIALS = credentials("pypi-cred")
     }
     stages {
