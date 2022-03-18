@@ -5,9 +5,9 @@ pipeline {
     environment {
         PYPI_CREDENTIALS = credentials("pypi-cred")
     }
-    triggers {
-        cron('*/2 * * * *')
-    }
+    // triggers {
+    //     cron('*/2 * * * *')
+    // }
     options { 
         disableConcurrentBuilds()
         timeout(time: 1, unit: 'MINUTES')
