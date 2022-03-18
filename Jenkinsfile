@@ -37,7 +37,11 @@ pipeline {
         stage('Publish') {
             steps {
                 dir('python-application-example/python') {
-                    sh 'python -m twine upload dist/* -u $PYPI_CREDENTIALS_USR -p $PYPI_CREDENTIALS_PSW --skip-existing'
+                    timeout(time: 10, unit: 'MINUTES') {
+                        input message: 'Are you sure to deploy?', ok: 'Yes, deploy in STAGING'
+                        // Aqui haces tu deploy en el entorno staging
+                             sh 'python -m twine upload dist/* -u $PYPI_CREDENTIALS_USR -p $PYPI_CREDENTIALS_PSW --skip-existing'
+                    }
                 }
             }
         }
