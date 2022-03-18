@@ -8,6 +8,11 @@ pipeline {
     triggers {
         cron('*/2 * * * *')
     }
+    options { 
+        disableConcurrentBuilds()
+        timeout(time: 10, unit: 'MINUTES')
+        timestamps()
+    }
     stages {
         stage('Build') {
             steps {
